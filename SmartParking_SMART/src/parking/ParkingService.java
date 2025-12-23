@@ -12,10 +12,22 @@ public class ParkingService {
         spots.add(new ParkingSpot("E01", SpotType.EV));
     }
     ParkingSpot suggestSpot(VehicleType type){
+
+        // 1. EV -> ưu tiên chỗ EV
+        if(type == VehicleType.EV){
+            for(ParkingSpot s : spots)
+                if(s.available && s.type == SpotType.EV)
+                    return s;
+        }
+
+        // 2. Các xe khác -> chỗ thường / VIP
         for(ParkingSpot s : spots)
-            if(s.available && s.suitable(type)) return s;
+            if(s.available && s.type != SpotType.EV)
+                return s;
+
         return null;
     }
+
     Vehicle createVehicle(String plate){
         if(plate.startsWith("EV")) return new EV(plate);
         if(plate.endsWith("M")) return new Motorbike(plate);
