@@ -1,9 +1,10 @@
+
 package parking.storage;
 
 import parking.*;
 import java.io.*;
 import java.util.*;
-
+// CSV file storage for parking data
 public class FileStorageService {
 
     private static final String DATA_DIR = "data/";

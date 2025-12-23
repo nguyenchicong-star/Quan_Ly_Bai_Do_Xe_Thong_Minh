@@ -1,6 +1,6 @@
 
 package parking;
-public class ParkingSpot {
+public class ParkingSpot    {
     public String id;
     public SpotType type;
     public boolean available = true;

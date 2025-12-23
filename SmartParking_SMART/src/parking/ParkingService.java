@@ -1,4 +1,4 @@
-
+// Smart parking EV priority
 package parking;
 import java.util.*;
 import java.time.*;
@@ -11,8 +11,8 @@ public class ParkingService {
         spots.add(new ParkingSpot("V01", SpotType.VIP));
         spots.add(new ParkingSpot("E01", SpotType.EV));
     }
+    // Smart parking: prioritize EV spots before standard spots
     ParkingSpot suggestSpot(VehicleType type){
-
         // 1. EV -> ưu tiên chỗ EV
         if(type == VehicleType.EV){
             for(ParkingSpot s : spots)
@@ -33,6 +33,7 @@ public class ParkingService {
         if(plate.endsWith("M")) return new Motorbike(plate);
         return new Car(plate);
     }
+    // Handle check-in and check-out workflow
     public void enter(String plate){
         Vehicle v = createVehicle(plate);
         ParkingSpot s = suggestSpot(v.getType());

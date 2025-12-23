@@ -1,4 +1,5 @@
-
+// Base class for all vehicle types
+// Base vehicle class
 package parking;
 public abstract class Vehicle {
     protected String plate;
